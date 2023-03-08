@@ -1,0 +1,5 @@
+{
+    "user1": {"groups" : ["Dev", "Platform-Engineer"]},
+    "user2": {"groups" : ["Database-Administrator", "Platform-Engineer"]},
+    "user3": {"groups" : ["Platform-Engineer"]}
+}
