@@ -41,3 +41,11 @@ module "create-groups" {
     group_name = each.key
     path = "/users/"
 }
+
+module "add-user-groups" {
+    source = "./modules/user-groups"
+
+    for_each = local.user_group_json
+    user_name = each.key
+    group_names = each.value.groups  
+}
