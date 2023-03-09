@@ -15,9 +15,8 @@ provider "aws" {
 
 # Declares the local variables
 locals {    
-    user_json = jsondecode(file("${path.module}/input/user_data/user_json.json"))
-    user_groups = ["Dev","Platform-Engineer", "Database-Administrator"]
-    environments = ["Dev","pre-prod"]    
+    user_group_json = jsondecode(file("${path.module}/input/user_data/user_groups.json"))
+    groups_json = jsondecode(file("${path.module}/input/user_data/groups.json"))   
 }
 
 resource "aws_budgets_budget" "demo_sam_budget" {
@@ -28,9 +27,17 @@ resource "aws_budgets_budget" "demo_sam_budget" {
   time_unit    = "MONTHLY"
 }
 
-# Creates the users
-module "users-creation" {
-    source = "./modules/user-accounts"
+module "create-users" {
+    source = "./modules/users"
 
-    user_json = local.user_json
+    for_each = local.user_group_json
+    user_name = each.key
+} 
+
+module "create-groups" {
+    source = "./modules/groups"
+    
+    for_each = local.groups_json
+    group_name = each.key
+    path = "/users/"
 }
