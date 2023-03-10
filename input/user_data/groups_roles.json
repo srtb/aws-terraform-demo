@@ -1,0 +1,4 @@
+{
+    "team-support": {"roles": ["arn:aws:iam::956467568537:role/administrator_access"]},
+    "team-development": {"roles": ["arn:aws:iam::956467568537:role/administrator_access","arn:aws:iam::956467568537:role/database-administrator-role"]}
+}

@@ -1,4 +1,0 @@
-{
-    "team-support": {"roles": ["arn:aws:iam::aws:policy/AdministratorAccess"]},
-    "team-development": {"roles": ["arn:aws:iam::aws:policy/AdministratorAccess"]}                                     
-}
